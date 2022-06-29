@@ -29,6 +29,7 @@ namespace Business.Concrete
             _productDal = productDal;
             _categoryService = categoryService;
         }
+        //[SecuredOperation()]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
