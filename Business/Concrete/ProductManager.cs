@@ -36,8 +36,8 @@ namespace Business.Concrete
         {
            IResult result= BusinessRules.Run(
                 CheckIfProductNameExists(product.ProductName),
-                CheckIfProductCountOfCategoryCorrect(product.CategoryId),
-                CheckIfCategoryLimitExceded()
+                CheckIfProductCountOfCategoryCorrect(product.CategoryId)
+                //CheckIfCategoryLimitExceded()
                 );
 
             if (result != null)
@@ -100,15 +100,15 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
-        private IResult CheckIfCategoryLimitExceded()
-        {
-            var result = _categoryService.GetAll();
-            if (result.Data.Count>15)
-            {
-                return new ErrorResult(Messages.CategoryLimitExceded);
-            }
-            return new SuccessResult();
+        //private IResult CheckIfCategoryLimitExceded()
+        //{
+        //    var result = _categoryService.GetAll();
+        //    if (result.Data.Count>15)
+        //    {
+        //        return new ErrorResult(Messages.CategoryLimitExceded);
+        //    }
+        //    return new SuccessResult();
 
-        }
+        //}
     }
 }
